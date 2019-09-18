@@ -1,12 +1,14 @@
-const express = require('express');
-const server = express();
-server.use(express.static(__dirname + ''));
+"use strict";
 
-server.get("/", (req, res) => {
+const express = require('express');
+const app = express();
+
+app.use(express.static(__dirname + ''));
+
+app.get("/", (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-const port = 4000;
-server.listen(port, () => {
-    console.log(`Server listening at ${port}`);
+app.listen(process.env.PORT || 4000, function () {
+    console.log("Express app listening");
 });
